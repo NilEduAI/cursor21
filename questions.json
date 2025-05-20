@@ -1,0 +1,106 @@
+{
+    "videoId": "UFX20f2VqjI",
+    "title": "Video Interactivo de Ejemplo",
+    "questions": [
+        {
+            "id": 1,
+            "time": 30,
+            "question": "¿Cuál es la capital de Francia?",
+            "answers": [
+                {
+                    "text": "París",
+                    "correct": true
+                },
+                {
+                    "text": "Lyon",
+                    "correct": false
+                },
+                {
+                    "text": "Marsella",
+                    "correct": false
+                },
+                {
+                    "text": "Burdeos",
+                    "correct": false
+                }
+            ],
+            "hints": [
+                "Es conocida como la Ciudad de la Luz",
+                "Es la ciudad más poblada de Francia"
+            ],
+            "explanation": "París es la capital de Francia desde el año 987 d.C.",
+            "difficulty": "fácil",
+            "points": 100
+        },
+        {
+            "id": 2,
+            "time": 60,
+            "question": "¿En qué año comenzó la Primera Guerra Mundial?",
+            "answers": [
+                {
+                    "text": "1914",
+                    "correct": true
+                },
+                {
+                    "text": "1918",
+                    "correct": false
+                },
+                {
+                    "text": "1939",
+                    "correct": false
+                },
+                {
+                    "text": "1945",
+                    "correct": false
+                }
+            ],
+            "hints": [
+                "Ocurrió en el siglo XX",
+                "Fue antes de la Segunda Guerra Mundial"
+            ],
+            "explanation": "La Primera Guerra Mundial comenzó en 1914 con el asesinato del Archiduque Francisco Fernando de Austria.",
+            "difficulty": "media",
+            "points": 150
+        },
+        {
+            "id": 3,
+            "time": 45,
+            "question": "¿Cuál es el planeta más grande del sistema solar?",
+            "answers": [
+                {
+                    "text": "Júpiter",
+                    "correct": true
+                },
+                {
+                    "text": "Saturno",
+                    "correct": false
+                },
+                {
+                    "text": "Neptuno",
+                    "correct": false
+                },
+                {
+                    "text": "Urano",
+                    "correct": false
+                }
+            ],
+            "hints": [
+                "Es el quinto planeta desde el Sol",
+                "Tiene una gran mancha roja"
+            ],
+            "explanation": "Júpiter es el planeta más grande del sistema solar, con un diámetro de aproximadamente 139,820 kilómetros.",
+            "difficulty": "fácil",
+            "points": 100
+        }
+    ],
+    "metadata": {
+        "version": "1.0",
+        "author": "NIL EduAI",
+        "lastUpdated": "2024-03-20",
+        "difficultyLevels": {
+            "fácil": 100,
+            "media": 150,
+            "difícil": 200
+        }
+    }
+}

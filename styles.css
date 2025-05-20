@@ -1,0 +1,412 @@
+:root {
+    --primary-color: #5e35b1; /* Morado profundo */
+    --secondary-color: #757575; /* Gris medio */
+    --success-color: #43a047; /* Verde */
+    --danger-color: #e53935; /* Rojo */
+    --warning-color: #ffb300; /* Ámbar */
+    --info-color: #03a9f4; /* Azul claro */
+    --light-color: #f5f5f5; /* Gris muy claro */
+    --dark-color: #212121; /* Gris muy oscuro */
+    --background-color: #e0e0e0; /* Fondo principal suave */
+    --surface-color: #ffffff; /* Color para tarjetas y contenedores */
+    --border-radius: 8px;
+    --transition-speed: 0.3s;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+body {
+    font-family: 'Roboto', sans-serif; /* Usar una fuente moderna de Google Fonts */
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-color);
+    color: var(--dark-color);
+}
+
+/* Contenedor principal y secciones */
+.setup-section,
+.main-content,
+.review-section {
+    background-color: var(--surface-color);
+    padding: 30px;
+    border-radius: var(--border-radius);
+    margin: 20px auto;
+    max-width: 900px; /* Ancho máximo */
+    width: 95%;
+    box-shadow: 0 4px 12px var(--shadow-color);
+}
+
+.main-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Títulos */
+h1,
+h2 {
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Formularios */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: var(--dark-color);
+}
+
+.form-group input,
+.form-group textarea {
+    width: calc(100% - 24px); /* 100% menos padding */
+    padding: 12px;
+    border: 1px solid #bdbdbd; /* Gris claro para borde */
+    border-radius: var(--border-radius);
+    font-size: 1em;
+    font-family: 'Roboto', sans-serif;
+    transition: border-color var(--transition-speed), box-shadow var(--transition-speed);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.2rem rgba(94, 53, 177, 0.25); /* Sombra sutil al enfocar */
+}
+
+.form-group input[type="password"] {
+    font-family: monospace; /* Para que las contraseñas se vean con espaciado fijo */
+}
+
+.setup-section .form-group:last-of-type {
+    margin-bottom: 30px; /* Más espacio antes del botón */
+}
+
+/* Contenedor y reproductor de video */
+.video-container {
+    width: 100%;
+    max-width: 800px; /* Ancho máximo del video */
+    margin-bottom: 20px;
+    background: #000;
+    border-radius: var(--border-radius);
+    overflow: hidden; /* Importante para la sombra y bordes */
+    box-shadow: 0 4px 8px var(--shadow-color);
+}
+
+#youtube-player {
+    width: 100%;
+    aspect-ratio: 16 / 9; /* Mantener relación de aspecto 16:9 */
+}
+
+#youtube-player iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* Panel de control */
+.control-panel {
+    width: 100%;
+    max-width: 800px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    background-color: var(--surface-color);
+    padding: 15px;
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 4px var(--shadow-color);
+}
+
+/* Barra de progreso */
+.progress-container {
+    flex-grow: 1;
+    margin-right: 15px;
+    height: 12px; /* Altura más sutil */
+    background-color: #e0e0e0; /* Gris claro */
+    border-radius: 6px; /* Bordes redondeados */
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    background-color: var(--primary-color); /* Color principal */
+    width: 0%; /* Controlado por JS */
+    transition: width 0.4s ease-out; /* Transición suave */
+}
+
+.score-container {
+    font-size: 1.1em;
+    font-weight: bold;
+    color: var(--dark-color);
+}
+
+/* Botones */
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: 500; /* Peso de fuente */
+    transition: all var(--transition-speed);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    justify-content: center; /* Centrar contenido del botón */
+}
+
+.btn:hover {
+    opacity: 0.9; /* Ligera transparencia al pasar el ratón */
+    box-shadow: 0 2px 8px var(--shadow-color); /* Sombra al pasar el ratón */
+    transform: translateY(-2px); /* Ligero desplazamiento hacia arriba */
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.btn-secondary {
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+#change-video {
+     margin-left: auto; /* Empuja el botón a la derecha en el panel de control */
+}
+
+/* Overlay de Preguntas */
+.question-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(var(--dark-color), 0.85); /* Fondo oscuro con transparencia */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Asegura que esté por encima de todo */
+    backdrop-filter: blur(5px); /* Efecto de desenfoque */
+}
+
+.question-container {
+    background-color: var(--surface-color);
+    padding: 40px; /* Más padding */
+    border-radius: var(--border-radius);
+    text-align: center;
+    max-width: 600px;
+    width: 90%;
+    box-shadow: 0 8px 16px var(--shadow-color);
+    animation: fadeIn 0.4s ease-out; /* Animación de entrada */
+}
+
+.question-container h2 {
+    margin-top: 0;
+    font-size: 1.5em;
+    color: var(--dark-color);
+}
+
+.answers-container {
+    margin-top: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px; /* Más espacio entre respuestas */
+}
+
+.answers-container button {
+    width: 100%;
+    padding: 15px; /* Más padding en botones de respuesta */
+    border: 1px solid #e0e0e0;
+    border-radius: var(--border-radius);
+    background-color: var(--light-color);
+    text-align: left;
+    font-size: 1em;
+    transition: all var(--transition-speed);
+    cursor: pointer;
+}
+
+.answers-container button:hover:not(.correct):not(.incorrect) {
+    background-color: #d5d5d5; /* Gris un poco más oscuro al pasar el ratón */
+}
+
+.answers-container button.selected {
+    border-color: var(--primary-color);
+    background-color: rgba(94, 53, 177, 0.1); /* Fondo sutil con color primario */
+}
+
+.answers-container button.correct {
+    background-color: var(--success-color);
+    color: white;
+    border-color: var(--success-color);
+}
+
+.answers-container button.incorrect {
+    background-color: var(--danger-color);
+    color: white;
+    border-color: var(--danger-color);
+}
+
+.feedback {
+    margin-top: 20px;
+    font-weight: bold;
+    min-height: 1.5em; /* Espacio para el feedback */
+    font-size: 1.1em;
+}
+
+.timer-container {
+    margin-top: 20px;
+    font-size: 1.3em;
+    font-weight: bold;
+    color: var(--dark-color);
+}
+
+.timer-container span {
+    color: var(--danger-color); /* Color para el tiempo */
+}
+
+.hint-text {
+     margin-top: 15px;
+     padding: 10px;
+     background-color: #fff9c4; /* Amarillo claro */
+     border: 1px solid #ffeb3b; /* Amarillo */
+     border-radius: var(--border-radius);
+     font-style: italic;
+     color: var(--dark-color);
+}
+
+.button-container {
+    margin-top: 30px;
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+/* Sección de Revisión */
+.review-section {
+    /* Estilos de sección ya definidos arriba */
+}
+
+.review-section h2 {
+    margin-top: 0;
+}
+
+#review-content {
+    margin-top: 20px;
+}
+
+.review-item {
+    border-bottom: 1px solid #eeeeee;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+    padding-left: 10px; /* Espacio para la barra de color */
+}
+
+.review-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.review-item.correct {
+    border-left: 5px solid var(--success-color);
+}
+
+.review-item.incorrect {
+    border-left: 5px solid var(--danger-color);
+}
+
+.review-item p {
+    margin: 8px 0;
+}
+
+.review-item .question-text {
+    font-weight: bold;
+    color: var(--dark-color);
+}
+
+.review-item .user-answer {
+    color: var(--primary-color);
+    font-style: italic;
+}
+
+.review-item .correct-answer {
+     color: var(--success-color);
+     font-weight: 500;
+}
+
+.review-item .feedback-text {
+    font-style: italic;
+    color: #555;
+    margin-top: 5px;
+}
+
+.review-section .btn {
+    margin-top: 20px;
+}
+
+/* Utilidades */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .setup-section,
+    .main-content,
+    .review-section {
+        padding: 20px;
+    }
+    
+    .question-container {
+        padding: 30px 20px; /* Ajustar padding en móvil */
+    }
+    
+    .control-panel {
+        flex-direction: column; /* Apila elementos en columnas en móvil */
+        align-items: stretch;
+        gap: 10px; /* Espacio entre elementos apilados */
+    }
+
+    .score-container,
+    #change-video {
+        margin-left: 0; /* Resetear margen */
+        margin-right: 0;
+        width: 100%; /* Ocupa todo el ancho */
+        text-align: center; /* Centrar texto/botón */
+    }
+    
+    .progress-container {
+        margin-right: 0;
+    }
+
+    .button-container {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .button-container .btn {
+        width: 100%;
+    }
+}
